@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import NavBar from "./components/NavBar";
 import HomePage from "./pages/HomePage";
 import AllPetsPage from "./pages/AllPetsPage";
+import PetDetailsPage from "./pages/PetDetailsPage";
 import ContactPage from "./pages/ContactPage";
 
 

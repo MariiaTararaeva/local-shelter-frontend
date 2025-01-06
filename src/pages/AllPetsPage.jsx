@@ -1,6 +1,29 @@
 import { Link } from "react-router-dom";
+import { useEffect, useState} from "react";
+import { useParams, Navigate } from "react-router-dom";
 function AllPetsPage () {
+    
+const [pets, setPets] = useState([]);
+const fetchPets = async () => {
+    try {
+        const response = await fetch ('http://localhost:4000/animals')
+        if (response.ok) {
+            const petsData = await response.json()
+            console.log(petsData)
+            setPets(petsData)
+        }
+    } catch (error) {
+        console.log (error)
+    }
+}
+
+useEffect (() =>{
+    fetchPets()
+}, [])
+
+
 return(
+
     <div>
  <h1 style={{color: "white" }}>List of all our Pets</h1>
 <Link to='/'>
