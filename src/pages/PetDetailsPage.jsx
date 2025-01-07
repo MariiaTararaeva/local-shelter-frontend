@@ -2,16 +2,16 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 function PetDetailsPage() {
-  const { petsId } = useParams(); // Extract petsId from the URL
-  const [pet, setPet] = useState(null); // State for a single pet
-  const [error, setError] = useState(null); // State for errors
-  const [loading, setLoading] = useState(true); // State for loading
+  const { petsId } = useParams();
+  const [pet, setPet] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchPet = async () => {
       try {
-        const response = await fetch("http://localhost:4000/animals"); // Fetch all animals
+        const response = await fetch("http://localhost:4000/animals");
         if (!response.ok) {
           throw new Error("Failed to fetch animals");
         }
@@ -47,38 +47,34 @@ function PetDetailsPage() {
 
   return (
     <div className="d-inline-flex flex-column justify-content-center align-items-center w-100 p-4">
-      <h1>{pet.name}</h1>
+      <h1 className="detailsTitle">{pet.name}</h1>
 
       {pet.photos && pet.photos[0] && (
         <img
+          className="photoDetails"
           src={pet.photos[0].medium}
           alt="Pet Image"
-          height="300px"
-          width="auto"
         />
       )}
-      <h3>Type: {pet.type}</h3>
-      <p>Breed: {pet.breeds.primary}</p>
-      <p>Color: {pet.colors.primary || "Unknown"}</p>
-      <p>Age: {pet.age}</p>
-      <p>Gender: {pet.gender}</p>
-      <p>Size: {pet.size}</p>
-      <p>Coat: {pet.coat}</p>
-      <p>
-        Attributes:{" "}
-        {pet.attributes.spayed_neutered
-          ? "Spayed/Neutered"
-          : "Not Spayed/Neutered"}
-      </p>
-      <p>
-        Tags: {pet.tags && pet.tags.length > 0 ? pet.tags.join(", ") : "None"}
-      </p>
-      <p>Description: {pet.description}</p>
-      <Link to={`/contact`}>
-        <button className="buttonBox" type="button">
-          Adopt!
-        </button>
-      </Link>
+      <div className="textDetails">
+        <p>Breed: {pet.breeds.primary}</p>
+        <p>Color: {pet.colors.primary || "Unknown"}</p>
+        <p>Age: {pet.age}</p>
+        <p>Gender: {pet.gender}</p>
+        <p>Size: {pet.size}</p>
+        <p>Coat: {pet.coat}</p>
+        <p>
+          Attributes:{" "}
+          {pet.attributes.spayed_neutered
+            ? "Spayed/Neutered"
+            : "Not Spayed/Neutered"}
+        </p>
+        <p>
+          Tags: {pet.tags && pet.tags.length > 0 ? pet.tags.join(", ") : "None"}
+        </p>
+        <p>Description: {pet.description}</p>
+        {/* <p>Status: {pet.status}</p> */}
+      </div>
       <button
         className="btn btn-primary"
         onClick={() => {

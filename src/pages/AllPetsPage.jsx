@@ -31,7 +31,7 @@ function AllPetsPage({ searchTerm }) {
 
   return (
     <div className="container">
-      <h1 className="title">All Animals</h1>
+      <h1 className="title">All Our Pets</h1>
       <AnimalList animals={animals} searchTerm={searchTerm} />
     </div>
   );

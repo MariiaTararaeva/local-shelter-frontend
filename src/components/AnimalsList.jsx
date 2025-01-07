@@ -33,7 +33,7 @@ function AnimalList({ animals, searchTerm }) {
           <div className="text-column">
             <p>
               <h3>
-                {animal.name}({animal.gender})
+                {animal.name} ({animal.gender})
               </h3>
               {animal.name} is a {animal.age} {animal.type}..would you like to
               know more?

@@ -25,11 +25,18 @@
   padding: 10px;
   border-radius: 5px;
   background-color: #f1f3f4;
-  text-align: center;
   border: 2px solid #fbbc04;
 }
 
+.text-column {
+  margin-left: 20px;
+  margin-right: 20px;
+  text-align: left;
+  margin-bottom: 30px;
+}
+
 .photoBox {
+  margin: 10px 10px 10px 10px;
   width: 130px;
   height: 130px;
   object-fit: cover;
@@ -38,6 +45,7 @@
 
 .buttonBox {
   text-decoration: none;
+  text-align: center;
   background-color: #34a853;
   color: white;
   padding: 5px 10px;
@@ -47,25 +55,6 @@
 
 .buttonBox:hover {
   background-color: #0d652d;
-}
-
-/*card of home page*/
-.card {
-  background-color: #34a853;
-  border: 2px solid black;
-  border-radius: 5px;
-  text-align: center;
-  margin: 5px 10px 30px 5px;
-  color: black;
-}
-
-.buttonCard {
-  background-color: #ceead6;
-  margin-bottom: 5px;
-}
-
-.titleCard {
-  font-weight: bolder;
 }
 
 /* Sidebar */
@@ -101,9 +90,12 @@
   position: fixed;
   top: 10px;
   right: 10px;
-  background-color: #4385f4;
-  border: 2px solid #ccc;
+  background-color: #4384f491;
+  color: #ffcc10;
+  border: none;
+  box-shadow: 0px 3px 5px 2px #ffcb1063;
   padding: 10px;
+  margin: 20px 20px 0px 0px;
   font-size: 20px;
   cursor: pointer;
   border-radius: 5px;
@@ -120,10 +112,6 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
-.navbar-logo {
-  margin-left: 10px;
-}
-
 .navbar-logo img {
   width: 180px; /* Adjust size as needed */
   height: 100px; /* Adjust size as needed */
@@ -135,8 +123,84 @@
     grid-template-columns: repeat(3, 1fr); /* From 1200px, 3 columns */
   }
 }
+
 @media (max-width: 768px) {
   .animal-list {
     grid-template-columns: 1fr; /* One column in small screens */
   }
+}
+
+/*details Page*/
+
+.detailsTitle {
+  text-align: center;
+}
+
+.photoDetails {
+  height: 300px;
+  width: auto;
+  margin-left: 160px;
+  border-radius: 10px;
+}
+
+.textDetails {
+  text-align: left;
+  margin-left: 160px;
+  margin-top: 50px;
+}
+
+/*Home page*/
+
+.imgContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.imgContainer img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.title {
+  color: ;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.card {
+  background-color: #34a853;
+  border: 2px solid black;
+  border-radius: 5px;
+  text-align: center;
+  margin: 5px 10px 30px 5px;
+  color: black;
+}
+
+.buttonCard {
+  background-color: #ceead6;
+  margin-bottom: 5px;
+}
+
+.titleCard {
+  font-weight: bolder;
+}
+
+.aboutUsText {
+  margin-left: 40px;
+  margin-right: 40px;
+  line-height: 1.6;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: #4385f4;
+  justify-content: flex-start;
+  text-align: right;
+  max-width: 45%;
+  margin: 20px auto;
 }

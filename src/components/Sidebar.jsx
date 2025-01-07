@@ -21,7 +21,7 @@ function Sidebar() {
           <NavLink to="/">Home</NavLink>
         </div>
         <div className="menu-item">
-          <NavLink to="/pet/new">Add a new item</NavLink>
+          <NavLink to="/pet/new">Add a new pet</NavLink>
         </div>
         <div className="menu-item">
           <NavLink to="/about">About</NavLink>
