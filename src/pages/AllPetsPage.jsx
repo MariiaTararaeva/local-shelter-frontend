@@ -1,73 +1,44 @@
-import "../styles/AllPetsPage.css";
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import "../app.css";
+import { useEffect, useState } from "react";
+import AnimalList from "../components/AnimalsList";
+import PropTypes from "prop-types";
 
-function AllAnimalsPage() {
-  const [animals, setAnimals] = useState([]); // State to store fetched animals
-  const [error, setError] = useState(null); // State for error handling
-  const [loading, setLoading] = useState(true); // State for loading state
+function AllPetsPage({ searchTerm }) {
+  const [animals, setAnimals] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const fetchAnimals = async () => {
       try {
-        const response = await fetch("http://localhost:4000/animals"); // Backend endpoint
+        const response = await fetch("http://localhost:4000/animals");
         if (!response.ok) {
           throw new Error("Failed to fetch animals");
         }
-        const animalsData = await response.json(); // Parse response
-        console.log("Fetched Animals:", animalsData); // Debugging
-        setAnimals(animalsData); // Update state with fetched data
+        const animalsData = await response.json();
+        setAnimals(animalsData);
       } catch (error) {
-        console.error("Fetch error:", error);
-        setError(error.message); // Set error state
+        setError(error.message);
       } finally {
-        setLoading(false); // Stop loading spinner
+        setLoading(false);
       }
     };
     fetchAnimals();
   }, []);
-  if (loading) {
-    return <p>Loading animals...</p>; // Show loading message
-  }
-  if (error) {
-    return <p>Error: {error}</p>; // Show error message
-  }
+
+  if (loading) return <p>Loading animals...</p>;
+  if (error) return <p>Error: {error}</p>;
 
   return (
     <div className="container">
-      <h1 className="title"> List of All Animals</h1>
-
-      <div className="animal-list">
-        {animals.length > 0 ? (
-          animals.map((animal) => (
-            <div className="petBox" key={animal.id}>
-              <div className="text-column">
-                <h3>{animal.name}</h3>
-                <p>Type: {animal.type}</p>
-                <p>Age: {animal.age}</p>
-              </div>
-              <div className="image-column">
-                <img
-                  className="photoBox"
-                  src={
-                    animal.photos && animal.photos[0]
-                      ? animal.photos[0].small
-                      : "./src/assets/localShelterLogoImage.png"
-                  }
-                  alt="Pet Pic"
-                />{" "}
-              </div>
-              <Link to={`/animals/${animal.id}`}>
-                <button className="buttonBox" type="button">
-                  Details
-                </button>
-              </Link>
-            </div>
-          ))
-        ) : (
-          <p>No animals available</p>
-        )}
-      </div>
+      <h1 className="title">All Animals</h1>
+      <AnimalList animals={animals} searchTerm={searchTerm} />
     </div>
   );
 }
-export default AllAnimalsPage;
+
+AllPetsPage.propTypes = {
+  searchTerm: PropTypes.string,
+};
+
+export default AllPetsPage;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 function PetDetailsPage() {
@@ -64,10 +64,21 @@ function PetDetailsPage() {
       <p>Gender: {pet.gender}</p>
       <p>Size: {pet.size}</p>
       <p>Coat: {pet.coat}</p>
-      <p>Attributes: {pet.attributes.spayed_neutered ? "Spayed/Neutered" : "Not Spayed/Neutered"}</p>
-      <p>Tags: {pet.tags && pet.tags.length > 0 ? pet.tags.join(", ") : "None"}</p>
+      <p>
+        Attributes:{" "}
+        {pet.attributes.spayed_neutered
+          ? "Spayed/Neutered"
+          : "Not Spayed/Neutered"}
+      </p>
+      <p>
+        Tags: {pet.tags && pet.tags.length > 0 ? pet.tags.join(", ") : "None"}
+      </p>
       <p>Description: {pet.description}</p>
-
+      <Link to={`/contact`}>
+        <button className="buttonBox" type="button">
+          Adopt!
+        </button>
+      </Link>
       <button
         className="btn btn-primary"
         onClick={() => {
