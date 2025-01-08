@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import LogoText from "../assets/GoobyLogoShelter.png";
 import "../styles/App.css";
 
@@ -25,10 +24,5 @@ function NavBar({ searchTerm, setSearchTerm }) {
     </nav>
   );
 }
-
-NavBar.propTypes = {
-  searchTerm: PropTypes.string,
-  setSearchTerm: PropTypes.func,
-};
 
 export default NavBar;

@@ -1,15 +1,12 @@
 import "../styles/App.css";
 import { Link } from "react-router-dom";
+import dogImage from "../assets/adopted shelter.png";
 
 function HomePage() {
   return (
     <div>
       <div className="imgContainer">
-        <img
-          className="homePhoto"
-          src="./src/assets/adopted shelter.png"
-          alt="Pet Picture"
-        />
+        <img className="homePhoto" src={dogImage} alt="Pet Picture" />
         <h1 className="titleHome">Welcome to Gooby</h1>
       </div>
       <article className="aboutUsText">

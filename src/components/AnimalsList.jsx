@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import "../styles/App.css";
 
@@ -33,9 +33,9 @@ function AnimalList({ animals, searchTerm }) {
           </div>
           <div className="text-column">
             <p>
-              <h3>
+              <span className="petName">
                 {animal.name} ({animal.gender})
-              </h3>
+              </span>
               {animal.name} is a {animal.age} {animal.type}..would you like to
               know more?
             </p>
@@ -51,9 +51,9 @@ function AnimalList({ animals, searchTerm }) {
   );
 }
 
-AnimalList.propTypes = {
-  animals: PropTypes.array.isRequired,
-  searchTerm: PropTypes.string,
-};
+// AnimalList.propTypes = {
+//   animals: PropTypes.array.isRequired,
+//   searchTerm: PropTypes.string,
+// };
 
 export default AnimalList;
