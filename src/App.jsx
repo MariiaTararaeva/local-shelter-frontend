@@ -1,14 +1,20 @@
 import { useState } from "react";
-import "./styles/App.css";
-import { useLocation } from "react-router-dom";
-import AddNewAnimal from "./components/NewPetForm";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
+
+// Importing components and pages
 import NavBar from "./components/NavBar";
 import Sidebar from "./components/Sidebar";
 import HomePage from "./pages/HomePage";
 import AllPetsPage from "./pages/AllPetsPage";
-import ContactPage from "./pages/ContactPage";
+import AdoptedPetsPage from "./pages/AdoptedPetsPage";
+import EditAnimalForm from "./pages/EditPetPage";
+import AddNewAnimal from "./pages/NewPetPage";
 import PetDetailsPage from "./pages/PetDetailsPage";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function AppContent() {
   const [newAnimals, setNewAnimals] = useState([]); // State to manage the list of animals
@@ -25,8 +31,10 @@ function AppContent() {
         setSearchTerm={isSearchPage ? setSearchTerm : null}
       />
       <Sidebar />
+
       <Routes>
         <Route path="/" element={<HomePage />} />
+
         <Route
           path="/listOfPets"
           element={
@@ -36,7 +44,11 @@ function AppContent() {
             />
           }
         />
-        <Route path="/contact" element={<ContactPage />} />
+
+        <Route path="/adopted" element={<AdoptedPetsPage />} />
+
+        <Route path="/edit-animal/:id" element={<EditAnimalForm />} />
+
         <Route
           path="/pet/new"
           element={
@@ -46,7 +58,18 @@ function AppContent() {
             />
           }
         />
+
         <Route path="/animals/:petsId" element={<PetDetailsPage />} />
+
+        <Route
+          path="*"
+          element={
+            <div style={{ textAlign: "center", marginTop: "50px" }}>
+              <h2>404 - Page Not Found</h2>
+              <p>Sorry, the page you are looking for does not exist.</p>
+            </div>
+          }
+        />
       </Routes>
     </div>
   );

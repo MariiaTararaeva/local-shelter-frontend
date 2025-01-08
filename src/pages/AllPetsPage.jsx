@@ -1,7 +1,6 @@
 import "../styles/App.css";
 import { useEffect, useState } from "react";
 import AnimalList from "../components/AnimalsList";
-import PropTypes from "prop-types";
 
 function AllPetsPage({ searchTerm }) {
   const [animals, setAnimals] = useState([]);
@@ -36,9 +35,5 @@ function AllPetsPage({ searchTerm }) {
     </div>
   );
 }
-
-AllPetsPage.propTypes = {
-  searchTerm: PropTypes.string,
-};
 
 export default AllPetsPage;

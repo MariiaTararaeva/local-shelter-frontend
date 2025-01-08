@@ -24,15 +24,26 @@
   margin-right: 30px;
   padding: 10px;
   border-radius: 5px;
-  background-color: #f1f3f4;
-  border: 2px solid #fbbc04;
+  background-color: #ffffff;
+  /* border: 2px solid #fbbc04; */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .text-column {
+  position: relative;
+  padding: 20px;
   margin-left: 20px;
   margin-right: 20px;
   text-align: left;
   margin-bottom: 30px;
+}
+
+.petName {
+  display: block;
+  font-weight: bold;
+  color: black;
+  text-align: left;
+  margin-bottom: 10px;
 }
 
 .photoBox {
@@ -43,14 +54,38 @@
   border-radius: 20px;
 }
 
+.buttonContainer {
+  position: absolute; /* Posiciona el contenedor dentro de .text-column */
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
 .buttonBox {
-  text-decoration: none;
-  text-align: center;
-  background-color: #34a853;
+  position: absolute;
+  top: 130px;
+  right: 120px;
+  background-color: #3ab35a;
   color: white;
   padding: 5px 10px;
+  border: none;
   border-radius: 5px;
-  margin-right: 20px;
+  box-shadow: 1px 0 2px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.deleteButtonBox {
+  position: absolute;
+  top: 10px;
+  right: 1px;
+  background-color: white;
+  color: red;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 0 2px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
 }
 
 .buttonBox:hover {
@@ -91,9 +126,8 @@
   top: 10px;
   right: 10px;
   background-color: #4384f491;
-  color: #ffcc10;
+  color: #ffffff;
   border: none;
-  box-shadow: 0px 3px 5px 2px #ffcb1063;
   padding: 10px;
   margin: 20px 20px 0px 0px;
   font-size: 20px;
@@ -115,6 +149,21 @@
 .navbar-logo img {
   width: 180px; /* Adjust size as needed */
   height: 100px; /* Adjust size as needed */
+}
+
+.searchBar {
+  color: #4285f4;
+  border: 1px solid;
+  border-radius: 5px;
+  margin-right: 100px;
+  width: 200px;
+  height: 20px;
+}
+
+input[type="text"]::placeholder {
+  background-color: #f1f3f4;
+  background-color: ;
+  color: #888;
 }
 
 /*Responsive for each pet box*/
@@ -169,7 +218,7 @@
 }
 
 .card {
-  background-color: #34a853;
+  background-color: #d5ebdb;
   border: 2px solid black;
   border-radius: 5px;
   text-align: center;

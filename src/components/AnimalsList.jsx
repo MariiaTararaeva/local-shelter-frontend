@@ -1,8 +1,7 @@
-// import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import "../styles/App.css";
 
-function AnimalList({ animals, searchTerm }) {
+function AnimalList({ animals, searchTerm, setAnimals }) {
   const filteredAnimals = animals.filter((animal) => {
     const lowerSearchTerm = searchTerm.toLowerCase();
     return (
@@ -15,6 +14,10 @@ function AnimalList({ animals, searchTerm }) {
   if (filteredAnimals.length === 0) {
     return <p>No animals match your search</p>;
   }
+
+  const deleteAnimal = (id) => {
+    setAnimals(animals.filter((animal) => animal.id !== id));
+  };
 
   return (
     <div className="animal-list">
@@ -39,21 +42,25 @@ function AnimalList({ animals, searchTerm }) {
               {animal.name} is a {animal.age} {animal.type}..would you like to
               know more?
             </p>
-            <Link to={`/animals/${animal.id}`}>
-              <button className="buttonBox" type="button">
-                Details
+            <div className="buttonContainer">
+              <Link to={`/animals/${animal.id}`}>
+                <button className="buttonBox" type="button">
+                  Details
+                </button>
+              </Link>
+              <button
+                className="deleteButtonBox"
+                type="button"
+                onClick={() => deleteAnimal(animal.id)}
+              >
+                X
               </button>
-            </Link>
+            </div>
           </div>
         </div>
       ))}
     </div>
   );
 }
-
-// AnimalList.propTypes = {
-//   animals: PropTypes.array.isRequired,
-//   searchTerm: PropTypes.string,
-// };
 
 export default AnimalList;

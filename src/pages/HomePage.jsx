@@ -36,8 +36,8 @@ function HomePage() {
         </Link>
       </div>
       <div className="card">
-        <h5 className="titleCard">GET IN TOUCH</h5>
-        <Link to="/contact">
+        <h5 className="titleCard">Adoption Information</h5>
+        <Link to="/adopted">
           <button className="buttonCard" type="button">
             Your Details
           </button>

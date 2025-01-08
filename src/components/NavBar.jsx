@@ -14,8 +14,9 @@ function NavBar({ searchTerm, setSearchTerm }) {
       {setSearchTerm && (
         <div className="navbar-search">
           <input
+            className="searchBar"
             type="text"
-            placeholder="Search animals..."
+            placeholder="  Search animals..."
             value={searchTerm}
             onChange={handleSearch}
           />

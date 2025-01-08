@@ -1,0 +1,227 @@
+import { useState, useEffect } from "react";
+import { v4 as uuidv4 } from "uuid";
+import { useNavigate } from "react-router-dom";
+import "../styles/App.css";
+
+function AnimalForm({ animal = null, onSubmit }) {
+  const navigate = useNavigate();
+
+  // State variables
+  const [name, setName] = useState("");
+  const [breed, setBreed] = useState("");
+  const [color, setColor] = useState("");
+  const [age, setAge] = useState("");
+  const [gender, setGender] = useState("");
+  const [size, setSize] = useState("");
+  const [coat, setCoat] = useState("");
+  const [attributes, setAttributes] = useState("");
+  const [tags, setTags] = useState("");
+  const [description, setDescription] = useState("");
+  const [images, setImages] = useState("");
+  const [adopted, setAdopted] = useState(false);
+  const [error, setError] = useState(null);
+
+  // 📝 Update state if the `animal` prop changes
+  useEffect(() => {
+    if (animal) {
+      setName(animal.name || "");
+      setBreed(animal.breed || "");
+      setColor(animal.color || "");
+      setAge(animal.age || "");
+      setGender(animal.gender || "");
+      setSize(animal.size || "");
+      setCoat(animal.coat || "");
+      setAttributes(animal.attributes || "");
+      setTags(animal.tags || "");
+      setDescription(animal.description || "");
+      setImages(animal.images?.join(", ") || "");
+      setAdopted(animal.adopted || false);
+    }
+  }, [animal]);
+
+  // 📝 Form Submit Handler
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (!name.trim()) {
+      alert("Please provide a name for the animal.");
+      return;
+    }
+
+    if (!gender) {
+      alert("Please select a gender for the animal.");
+      return;
+    }
+
+    const updatedAnimal = {
+      id: animal?.id || uuidv4(),
+      name,
+      breed: breed || null,
+      color: color || null,
+      age: age || null,
+      gender,
+      size: size || null,
+      coat: coat || null,
+      attributes: attributes || null,
+      tags: tags || null,
+      description: description || null,
+      images: images.split(",").map((img) => img.trim()),
+      adopted,
+    };
+
+    try {
+      await onSubmit(updatedAnimal);
+      console.log(
+        animal ? "Animal successfully updated!" : "Animal successfully created!"
+      );
+
+      if (animal) {
+        navigate(`/animals/${animal.id}`);
+      } else {
+        navigate("/animals");
+      }
+    } catch (error) {
+      console.error("Error submitting animal:", error);
+      setError("There was an error submitting the animal. Please try again.");
+    }
+  };
+
+  return (
+    <div className="form">
+      <h2>{animal ? "Edit Animal Details" : "Add a New Animal"}</h2>
+      {error && <p className="error">⚠️ {error}</p>}
+      <form onSubmit={handleSubmit}>
+        {/* Name */}
+        <label>
+          Animal Name: <span style={{ color: "red" }}>*</span>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </label>
+
+        {/* Breed */}
+        <label>
+          Breed:
+          <input
+            type="text"
+            value={breed}
+            onChange={(e) => setBreed(e.target.value)}
+          />
+        </label>
+
+        {/* Color */}
+        <label>
+          Color:
+          <input
+            type="text"
+            value={color}
+            onChange={(e) => setColor(e.target.value)}
+          />
+        </label>
+
+        {/* Age */}
+        <label>
+          Age:
+          <input
+            type="text"
+            value={age}
+            onChange={(e) => setAge(e.target.value)}
+          />
+        </label>
+
+        {/* Gender */}
+        <label>
+          Gender: <span style={{ color: "red" }}>*</span>
+          <select
+            value={gender}
+            onChange={(e) => setGender(e.target.value)}
+            required
+          >
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </label>
+
+        {/* Size */}
+        <label>
+          Size:
+          <input
+            type="text"
+            value={size}
+            onChange={(e) => setSize(e.target.value)}
+          />
+        </label>
+
+        {/* Coat */}
+        <label>
+          Coat:
+          <input
+            type="text"
+            value={coat}
+            onChange={(e) => setCoat(e.target.value)}
+          />
+        </label>
+
+        {/* Attributes */}
+        <label>
+          Attributes:
+          <input
+            type="text"
+            value={attributes}
+            onChange={(e) => setAttributes(e.target.value)}
+          />
+        </label>
+
+        {/* Tags */}
+        <label>
+          Tags:
+          <input
+            type="text"
+            value={tags}
+            onChange={(e) => setTags(e.target.value)}
+          />
+        </label>
+
+        {/* Description */}
+        <label>
+          Description:
+          <textarea
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          ></textarea>
+        </label>
+
+        {/* Images */}
+        <label>
+          Images (comma-separated URLs):
+          <input
+            type="text"
+            value={images}
+            onChange={(e) => setImages(e.target.value)}
+          />
+        </label>
+
+        {/* Adopted Checkbox */}
+        <label>
+          Adopted:
+          <input
+            type="checkbox"
+            checked={adopted}
+            onChange={(e) => setAdopted(e.target.checked)}
+          />
+        </label>
+
+        {/* Submit Button */}
+        <button type="submit" className="buttonStyling">
+          {animal ? "Update Animal" : "Add Animal"}
+        </button>
+      </form>
+    </div>
+  );
+}
+
+export default AnimalForm;
