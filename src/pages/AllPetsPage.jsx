@@ -11,7 +11,7 @@ function AllPetsPage({ searchTerm }) {
   useEffect(() => {
     const fetchAnimals = async () => {
       try {
-        const response = await fetch("http://localhost:4000/animals");
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/animals`);
         if (!response.ok) {
           throw new Error("Failed to fetch animals");
         }
