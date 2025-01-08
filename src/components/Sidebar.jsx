@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
+import "../src/app.css";
 
 function Sidebar() {
   const [isSidebarVisible, setIsSidebarVisible] = useState(false); // State at component level
