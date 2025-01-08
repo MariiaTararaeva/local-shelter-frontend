@@ -113,8 +113,8 @@
 }
 
 .navbar-logo img {
- width: 180px; /* Adjust size as needed */
-    height: 100px; /* Adjust size as needed */
+  width: 180px; /* Adjust size as needed */
+  height: 100px; /* Adjust size as needed */
 }
 
 /*Responsive for each pet box*/
@@ -152,21 +152,21 @@
 /*Home page*/
 
 .imgContainer {
- position: relative;
-   display: inline-block;
-} 
+  position: relative;
+  display: inline-block;
+}
 
-.imgContainer img{
-display: block;
-    width: 100%;
-    height: auto;
+.imgContainer img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .title {
-  coior: absolute;
+  color: absolute;
   top: 50%;
   left: 50%;
-  }
+}
 
 .card {
   background-color: #34a853;
@@ -193,7 +193,6 @@ display: block;
 }
 
 .form {
-  disfl
   display: flex;
   flex-direction: column;
   align-items: center; /* Align input fields and labels to the right */
