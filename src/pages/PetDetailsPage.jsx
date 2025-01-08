@@ -26,6 +26,7 @@ function PetDetailsPage() {
         if (!foundPet) {
           throw new Error(`Pet with ID ${petsId} not found`);
         }
+        console.log("Fetched Pet Data:", foundPet); // Debugging
         setPet(foundPet);
       } catch (error) {
         console.error("Fetch error:", error);
@@ -71,40 +72,44 @@ function PetDetailsPage() {
     return <p>Error: {error}</p>;
   }
 
+  // Use defensive checks and defaults
+  const name = pet?.name || "Unnamed Pet";
+  const breed = pet?.breeds?.primary || "Breed not specified";
+  const color = pet?.colors?.primary || "Color not specified";
+  const age = pet?.age || "Age not specified";
+  const gender = pet?.gender || "Gender not specified";
+  const size = pet?.size || "Size not specified";
+  const coat = pet?.coat || "Coat not specified";
+  const spayedNeutered = pet?.attributes?.spayed_neutered
+    ? "Spayed/Neutered"
+    : "Not Spayed/Neutered";
+  const tags =
+    pet?.tags?.length > 0 ? pet.tags.join(", ") : "No tags available";
+  const description = pet?.description || "No description available";
+  const photo = pet?.photos?.[0]?.medium || "https://via.placeholder.com/300";
+
   return (
     <div className="d-inline-flex flex-column justify-content-center align-items-center w-100 p-4">
       {isEditing ? (
         <EditAnimalForm animal={pet} onSubmit={handleUpdatePet} />
       ) : (
         <>
-          <h1 className="detailsTitle">{pet.name}</h1>
+          <h1 className="detailsTitle">{name}</h1>
 
-          {pet.photos && pet.photos[0] && (
-            <img
-              className="photoDetails"
-              src={pet.photos[0].medium}
-              alt="Pet Image"
-            />
-          )}
+          <img className="photoDetails" src={photo} alt="Pet Image" />
+
           <div className="textDetails">
-            <p>Breed: {pet.breeds.primary}</p>
-            <p>Color: {pet.colors.primary || "Unknown"}</p>
-            <p>Age: {pet.age}</p>
-            <p>Gender: {pet.gender}</p>
-            <p>Size: {pet.size}</p>
-            <p>Coat: {pet.coat}</p>
-            <p>
-              Attributes:{" "}
-              {pet.attributes.spayed_neutered
-                ? "Spayed/Neutered"
-                : "Not Spayed/Neutered"}
-            </p>
-            <p>
-              Tags:{" "}
-              {pet.tags && pet.tags.length > 0 ? pet.tags.join(", ") : "None"}
-            </p>
-            <p>Description: {pet.description}</p>
+            <p>Breed: {breed}</p>
+            <p>Color: {color}</p>
+            <p>Age: {age}</p>
+            <p>Gender: {gender}</p>
+            <p>Size: {size}</p>
+            <p>Coat: {coat}</p>
+            <p>Attributes: {spayedNeutered}</p>
+            <p>Tags: {tags}</p>
+            <p>Description: {description}</p>
           </div>
+
           <div className="buttonGroup">
             <button
               className="btn btn-primary"

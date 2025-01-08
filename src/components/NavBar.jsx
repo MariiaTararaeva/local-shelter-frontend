@@ -1,5 +1,6 @@
 import LogoText from "../assets/GoobyLogoShelter.png";
 import "../styles/App.css";
+import { Link } from "react-router-dom";
 
 function NavBar({ searchTerm, setSearchTerm }) {
   const handleSearch = (event) => {
@@ -9,7 +10,9 @@ function NavBar({ searchTerm, setSearchTerm }) {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        <img src={LogoText} alt="LogoText" />
+        <Link to="/">
+          <img src={LogoText} alt="LogoText" />
+        </Link>
       </div>
       {setSearchTerm && (
         <div className="navbar-search">

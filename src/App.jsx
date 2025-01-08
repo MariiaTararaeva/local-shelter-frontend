@@ -39,6 +39,8 @@ function AppContent() {
           path="/listOfPets"
           element={
             <AllPetsPage
+              animals={newAnimals}
+              setAnimals={setNewAnimals}
               searchTerm={searchTerm}
               setSearchTerm={setSearchTerm}
             />

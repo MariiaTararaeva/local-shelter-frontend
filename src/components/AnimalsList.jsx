@@ -15,14 +15,31 @@ function AnimalList({ animals, searchTerm, setAnimals }) {
     return <p>No animals match your search</p>;
   }
 
-  const deleteAnimal = (id) => {
-    setAnimals(animals.filter((animal) => animal.id !== id));
+  const deleteAnimal = async (id) => {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/animals/${Number(id)}`,
+        {
+          method: "DELETE",
+        }
+      );
+      if (!response.ok) {
+        console.log("error");
+      }
+      setAnimals((prevAnimals) =>
+        prevAnimals.filter((animal) => animal.id !== id)
+      );
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <div className="animal-list">
       {filteredAnimals.map((animal) => (
         <div className="petBox" key={animal.id}>
+          {" "}
+          {console.log(animal)}
           <div className="image-column">
             <img
               className="photoBox"

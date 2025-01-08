@@ -207,14 +207,15 @@ input[type="text"]::placeholder {
 
 .imgContainer img {
   display: block;
-  width: 100%;
+  width: 110%;
   height: auto;
 }
 
-.title {
-  color: absolute;
-  top: 50%;
-  left: 50%;
+.titleHome {
+  position: absolute;
+  color: white;
+  top: 70%;
+  right: 60%;
 }
 
 .card {

@@ -31,7 +31,11 @@ function AllPetsPage({ searchTerm }) {
   return (
     <div className="container">
       <h1 className="title">All Our Pets</h1>
-      <AnimalList animals={animals} searchTerm={searchTerm} />
+      <AnimalList
+        animals={animals}
+        setAnimals={setAnimals}
+        searchTerm={searchTerm}
+      />
     </div>
   );
 }
