@@ -1,4 +1,4 @@
-import "../app.css";
+import "../styles/App.css";
 import { useEffect, useState } from "react";
 import AnimalList from "../components/AnimalsList";
 import PropTypes from "prop-types";

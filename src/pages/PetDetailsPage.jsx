@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import "../src/app.css";
+import "../styles/App.css";
 
 function PetDetailsPage() {
   const { petsId } = useParams();

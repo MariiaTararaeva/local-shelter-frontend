@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../src/app.css";
+import "../styles/App.css";
 import { useLocation } from "react-router-dom";
 import AddNewAnimal from "./components/NewPetForm";
 import NavBar from "./components/NavBar";

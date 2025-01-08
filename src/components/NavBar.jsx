@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import LogoText from "../assets/GoobyLogoShelter.png";
-import "../src/app.css";
+import "../styles/App.css";
 
 function NavBar({ searchTerm, setSearchTerm }) {
   const handleSearch = (event) => {
