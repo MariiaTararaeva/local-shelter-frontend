@@ -1,14 +1,17 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import { v4 as uuidv4 } from "uuid";
+import { useNavigate } from "react-router-dom";
 import "../styles/App.css";
 
 function AddNewAnimal({ newAnimals, setNewAnimals }) {
+  const navigate = useNavigate();
+
   // State variables for the form
   const [name, setName] = useState("");
   const [breed, setBreed] = useState("");
   const [color, setColor] = useState("");
-  const [age, setAge] = useState(0);
+  const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
   const [size, setSize] = useState("");
   const [coat, setCoat] = useState("");
@@ -16,56 +19,95 @@ function AddNewAnimal({ newAnimals, setNewAnimals }) {
   const [tags, setTags] = useState("");
   const [description, setDescription] = useState("");
   const [images, setImages] = useState("");
+  const [error, setError] = useState(null);
 
-  // Submit handler
-  function handleSubmit(event) {
+  // 🐾 Async function to add a new animal
+  const createAnimal = async (newAnimal) => {
+    try {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/animals`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newAnimal),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message);
+      }
+
+      console.log("Animal successfully added!");
+      navigate("/animals");
+    } catch (error) {
+      console.error("Error creating animal:", error);
+      setError(
+        error.message ||
+          "There was an error creating the animal. Please try again."
+      );
+    }
+  };
+
+  // 📝 Form Submit Handler
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     // Validate required fields
-    if (!name || !breed || !age || !gender) {
-      alert("Please fill in all required fields (Name, Breed, Age, Gender).");
+    if (!name.trim()) {
+      alert("Please provide a name for the animal.");
+      return;
+    }
+
+    if (!gender) {
+      alert("Please select a gender for the animal.");
       return;
     }
 
     const newAnimal = {
       id: uuidv4(),
       name,
-      breed,
-      color,
-      age,
+      breed: breed || null,
+      color: color || null,
+      age: age || null,
       gender,
-      size,
-      coat,
-      attributes,
-      tags,
-      description,
-      images,
+      size: size || null,
+      coat: coat || null,
+      attributes: attributes || null,
+      tags: tags || null,
+      description: description || null,
+      images: images || null,
     };
 
-    // Add new animal to the list
-    setNewAnimals([newAnimal, ...newAnimals]);
+    // Add new animal to the API
+    await createAnimal(newAnimal);
 
-    // Reset form fields
-    setName("");
-    setBreed("");
-    setColor("");
-    setAge(0);
-    setGender("");
-    setSize("");
-    setCoat("");
-    setAttributes("");
-    setTags("");
-    setDescription("");
-    setImages("");
-  }
+    // Add new animal to the local state if API call was successful
+    if (!error) {
+      setNewAnimals([newAnimal, ...newAnimals]);
+
+      // Reset form fields
+      setName("");
+      setBreed("");
+      setColor("");
+      setAge("");
+      setGender("");
+      setSize("");
+      setCoat("");
+      setAttributes("");
+      setTags("");
+      setDescription("");
+      setImages("");
+    }
+  };
 
   return (
     <div className="form">
       <h2>Add a New Animal to Our Shelter!</h2>
+      {error && <p className="error">⚠️ Oops... </p>}
       <form onSubmit={handleSubmit}>
         {/* Name */}
         <label>
-          Animal Name:
+          Animal Name: <span style={{ color: "red" }}>*</span>
           <input
             required
             type="text"
@@ -79,7 +121,6 @@ function AddNewAnimal({ newAnimals, setNewAnimals }) {
         <label>
           Breed:
           <input
-            required
             type="text"
             value={breed}
             placeholder="Enter the animal's breed"
@@ -102,7 +143,6 @@ function AddNewAnimal({ newAnimals, setNewAnimals }) {
         <label>
           Age:
           <input
-            required
             type="number"
             value={age}
             placeholder="Enter the animal's age"
@@ -112,7 +152,7 @@ function AddNewAnimal({ newAnimals, setNewAnimals }) {
 
         {/* Gender */}
         <label>
-          Gender:
+          Gender: <span style={{ color: "red" }}>*</span>
           <select
             required
             value={gender}
@@ -197,6 +237,7 @@ function AddNewAnimal({ newAnimals, setNewAnimals }) {
     </div>
   );
 }
+
 AddNewAnimal.propTypes = {
   newAnimals: PropTypes.array.isRequired,
   setNewAnimals: PropTypes.func.isRequired,
