@@ -5,6 +5,7 @@ body {
   display: flex;
   margin: 0px;
   padding: 0px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 h1 {
   font-size: 3.2em;

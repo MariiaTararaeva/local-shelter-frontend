@@ -6,8 +6,12 @@ import {
   useLocation,
 } from "react-router-dom";
 
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import "./styles/App.css";
 // Importing components and pages
 import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
 import Sidebar from "./components/Sidebar";
 import HomePage from "./pages/HomePage";
 import AllPetsPage from "./pages/AllPetsPage";
@@ -16,12 +20,10 @@ import EditAnimalForm from "./pages/EditPetPage";
 import AddNewAnimal from "./pages/NewPetPage";
 import NewPetForm from "./components/NewPetForm";
 import PetDetailsPage from "./pages/PetDetailsPage";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 function AppContent() {
-  const [newAnimals, setNewAnimals] = useState([]); // State to manage the list of animals
-  const [searchTerm, setSearchTerm] = useState(""); // Global state for search
+  const [newAnimals, setNewAnimals] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const location = useLocation();
 
   // Check if we are on the AllPetsPage
@@ -34,7 +36,6 @@ function AppContent() {
         setSearchTerm={isSearchPage ? setSearchTerm : null}
       />
       <Sidebar />
-
       <Routes>
         <Route path="/" element={<HomePage />} />
 
@@ -54,7 +55,6 @@ function AppContent() {
 
         <Route path="/edit-animal/:id" element={<EditAnimalForm />} />
         <Route path="/newpetform/:id" element={<NewPetForm />} />
-
         <Route
           path="/pet/new"
           element={
@@ -64,9 +64,7 @@ function AppContent() {
             />
           }
         />
-
         <Route path="/animals/:petsId" element={<PetDetailsPage />} />
-
         <Route
           path="*"
           element={
@@ -77,6 +75,7 @@ function AppContent() {
           }
         />
       </Routes>
+      <Footer />
     </div>
   );
 }

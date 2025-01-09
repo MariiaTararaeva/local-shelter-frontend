@@ -15,12 +15,10 @@ function Sidebar() {
 
   return (
     <div>
-      {/* Sidebar Toggle Button */}
       <button className="menu-button" onClick={toggleSidebar}>
         ☰
       </button>
 
-      {/* Sidebar Menu */}
       <div className={`sidebar ${isSidebarVisible ? "visible" : ""}`}>
         {/* Home Link */}
         <div className="menu-item">
@@ -32,7 +30,6 @@ function Sidebar() {
           </NavLink>
         </div>
 
-        {/* Add New Animal (Visible on Home, List of Pets, and Animal Details Pages) */}
         {(location.pathname === "/" ||
           location.pathname === "/listOfPets" ||
           isAnimalDetailsPage) && (
@@ -41,21 +38,18 @@ function Sidebar() {
           </div>
         )}
 
-        {/* View All Pets (only on Home page) */}
         {location.pathname === "/" && (
           <div className="menu-item">
             <NavLink to="/listOfPets">View All Pets</NavLink>
           </div>
         )}
 
-        {/* Adopted Pets (only on List of Pets page) */}
         {location.pathname === "/listOfPets" && (
           <div className="menu-item">
             <NavLink to="/adopted">Adopted Pets</NavLink>
           </div>
         )}
 
-        {/* Back to All Pets (on Edit or New Pet pages) */}
         {(location.pathname.startsWith("/edit-animal") ||
           location.pathname.startsWith("/pet/new")) && (
           <div className="menu-item">
@@ -63,7 +57,6 @@ function Sidebar() {
           </div>
         )}
 
-        {/* Return Home (on Edit or New Pet pages) */}
         {(location.pathname.startsWith("/edit-animal") ||
           location.pathname.startsWith("/pet/new")) && (
           <div className="menu-item">
@@ -71,7 +64,6 @@ function Sidebar() {
           </div>
         )}
 
-        {/* Add New Animal (on Adopted Pets page) */}
         {location.pathname === "/adopted" && (
           <div className="menu-item">
             <NavLink to="/pet/new">Add a New Pet</NavLink>

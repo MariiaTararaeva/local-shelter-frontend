@@ -20,13 +20,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-left: 30px;
-  margin-right: 30px;
-  padding: 10px;
-  border-radius: 5px;
+  margin: 0 auto;
+  padding: 1rem;
+  border-radius: 0.5rem;
   background-color: #ffffff;
-  /* border: 2px solid #fbbc04; */
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0.125rem 0 0.3125rem rgba(0, 0, 0, 0.5);
+  width: 90%;
+  max-width: 1200px;
 }
 
 .text-column {
@@ -55,24 +55,61 @@
 }
 
 .buttonContainer {
-  position: absolute; /* Posiciona el contenedor dentro de .text-column */
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  display: flex;
+  justify-content: flex-start;
+  gap: 15px;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.backButton {
+  margin-left: 10%;
+  padding: 10px 30px;
+}
+
+.editButton {
+  margin-right: 10px;
+  margin-top: 20px;
+  margin-left: 40%;
+}
+
+.backButton,
+.editButton {
+  padding: 10px 30px;
+  background-color: #3ab35a;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  text-align: center;
 }
 
 .buttonBox {
-  position: absolute;
-  top: 130px;
-  right: 120px;
+  position: relative;
+  left: 0 auto;
   background-color: #3ab35a;
   color: white;
-  padding: 5px 10px;
+  padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  box-shadow: 1px 0 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.2);
   cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.buttonBox:hover {
+  background-color: #2f8b46;
+  box-shadow: 2px 3px 7px rgba(0, 0, 0, 0.3);
+}
+
+.buttonBox:active {
+  background-color: #267238;
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.4);
 }
 
 .deleteButtonBox {
@@ -102,7 +139,7 @@
   background-color: #f1f3f4;
   color: white;
   border-radius: 8px 0px 0px 8px;
-  transition: left 0.3s ease-in-out; /* Smooth animation */
+  transition: left 0.3s ease-in-out;
   display: none;
   flex-direction: column;
   justify-content: space-around;
@@ -145,8 +182,8 @@
 }
 
 .navbar-logo img {
-  width: 180px; /* Adjust size as needed */
-  height: 100px; /* Adjust size as needed */
+  width: 180px;
+  height: 100px;
 }
 
 .searchBar {
@@ -163,19 +200,6 @@ input[type="text"]::placeholder {
   color: #888;
 }
 
-/*Responsive for each pet box*/
-@media (min-width: 1200px) {
-  .animal-list {
-    grid-template-columns: repeat(3, 1fr); /* From 1200px, 3 columns */
-  }
-}
-
-@media (max-width: 768px) {
-  .animal-list {
-    grid-template-columns: 1fr; /* One column in small screens */
-  }
-}
-
 /*details Page*/
 
 .detailsTitle {
@@ -186,61 +210,42 @@ input[type="text"]::placeholder {
   font-weight: bold;
 }
 
-/* Fallback logo styling */
 .carousel-fallback {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%; /* Take full slide height */
-  width: 100%; /* Take full slide width */
+  height: 100%;
+  width: 100%;
   background-color: #f0f0f0;
   border-radius: 10px;
 }
 
 .carousel-fallback img {
-  max-height: 50%; /* Make the logo smaller */
+  max-height: 50%;
   max-width: 50%;
-  opacity: 0.8; /* Slight transparency */
+  opacity: 0.8;
   object-fit: contain;
 }
 
-.slick-prev:before,
-.slick-next:before {
-  color: black; /* Customize carousel arrow color */
+/* Ensure dots are displayed and visible */
+.dots {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  position: relative; /* Change to absolute if needed for placement */
+  z-index: 10;
+  list-style: none;
+  overflow: visible !important; /* Ensure dots are not clipped */
 }
 
 .textDetails {
   text-align: left;
-  margin-top: 50px;
+  margin-top: 20px;
   background-color: white;
   box-shadow: 1px 0 2px black;
   width: 60%;
-}
-
-.backButton {
-  position: absolute;
-  bottom: 20px;
-  right: 30%;
-  background-color: #3ab35a;
-  color: white;
-  padding: 5px 20px;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 1px 0 2px rgba(0, 0, 0, 0.5);
-  cursor: pointer;
-}
-
-.editButton {
-  position: absolute;
-  bottom: 20px;
-  right: 20%;
-  background-color: #3ab35a;
-  color: white;
-  padding: 5px 20px;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 1px 0 2px rgba(0, 0, 0, 0.5);
-  cursor: pointer;
 }
 
 /*Home page*/
@@ -267,33 +272,59 @@ input[type="text"]::placeholder {
 
 .card1 {
   background-color: white;
-  border: 1px solid #3ab35a;
   border-radius: 8px;
   text-align: center;
-  margin: 220px 300px 0px 300px;
-  height: 130px;
-  padding-bottom: 10px;
+  margin: 1% auto;
+  padding: 20px;
   color: black;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 1200px;
+  height: auto;
+  box-shadow: 0 4px 8px rgba(89, 229, 94, 0.566);
 }
 
 .card2 {
   background-color: white;
-  border: 1px solid #3ab35a;
   border-radius: 8px;
   text-align: center;
-  margin: 20px 300px 0px 300px;
-  height: 130px;
-  padding-bottom: 10px;
+  margin: 1% auto;
+  padding: 20px;
   color: black;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 1200px;
+  height: auto;
+  box-shadow: 0 4px 8px rgba(89, 229, 94, 0.566);
 }
 
 .buttonCard {
-  background-color: white;
-  border: 2px solid grey;
-  box-shadow: 1px 0 2px rgba(0, 0, 0, 0.5);
+  background-color: #3ab35a;
+  border: 2px solid #2f8b46;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding: 8px 16px;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.buttonCard:hover {
+  background-color: #2f8b46;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.buttonCard:active {
+  background-color: #267238;
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.4);
 }
 
 .titleCard {
@@ -302,52 +333,70 @@ input[type="text"]::placeholder {
 }
 
 .aboutUsText {
-  position: absolute;
-  bottom: -100px;
-  color: white;
-  font-weight: bolder;
-  margin-top: 20px;
-  margin-left: 60px;
-  padding: 10px 30px 10px 30px;
-  width: 90%;
-  line-height: 1.6;
   background-color: #3ab35a;
   border-radius: 8px;
-  font-size: larger;
+  text-align: left;
+  margin: 30px auto;
+  padding: 20px;
+  color: white;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 90%;
+  max-width: 1200px;
+  height: auto;
+  box-shadow: 0 4px 8px rgba(89, 229, 94, 0.566);
+  font-weight: bolder;
+  line-height: 1.6;
+  font-size: 1rem;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Align input fields and labels to the right */
-  gap: 10px;
+  align-items: flex-start;
+  gap: 15px;
   color: #4385f4;
-  justify-content: flex-start; /* Keep it closer to the top */
-  text-align: right; /* Align labels to the right */
-  max-width: 45%; /* Limit the form's width for better appearance */
-  margin: 80px auto; /* Center horizontally with margin from the top */
+  justify-content: flex-start;
+  max-width: 90%;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #4385f4;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.form input {
-  padding: 5px;
+.form input,
+.form select,
+.form textarea {
+  width: 100%;
+  padding: 8px;
   border-radius: 5px;
   border: 1px solid #4385f4;
-}
-.carousel-container {
-  width: 80%;
-  margin: 20px auto;
-  max-width: 800px;
+  font-size: 1rem;
+  box-sizing: border-box;
 }
 
-.carousel-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 400px;
-  background-color: #f5f5f5;
-  border-radius: 10px;
-  overflow: hidden;
-  position: relative;
+.form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.form button {
+  padding: 10px 20px;
+  background-color: #4385f4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.form button:hover {
+  background-color: #356bbf;
 }
 
 .carousel-image,
@@ -356,4 +405,249 @@ input[type="text"]::placeholder {
   max-width: 100%;
   object-fit: cover;
   border-radius: 10px;
+}
+.carousel-slide {
+  display: flex;
+  margin-top: 20px;
+  justify-content: center;
+}
+.pet-details-page {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  width: 90%;
+  max-width: 1200px;
+  margin: 50px auto;
+}
+
+.carousel-container {
+  flex: 1;
+  max-width: 500px;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+}
+
+.textDetails {
+  flex: 1;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  line-height: 1.6;
+}
+
+.detailsTitle {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  text-align: left;
+  margin-left: 20px;
+  color: #4285f4;
+}
+.textDetails p {
+  margin-bottom: 15px;
+  font-size: 1rem;
+  color: #333;
+  margin-left: 20px;
+}
+
+.textDetails h3 {
+  margin-top: 30px;
+  font-size: 1.2rem;
+  color: #555;
+  margin-left: 20px;
+}
+
+.textDetails ul {
+  margin-top: 10px;
+  padding-left: 20px;
+  margin-left: 20px;
+}
+
+.textDetails ul li {
+  margin-bottom: 5px;
+  font-size: 1rem;
+}
+
+.carousel-fallback {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  display: flex;
+}
+
+.previewAnimals {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+
+.animalPreview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  width: 150px;
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+}
+
+.animalPreview:hover {
+  transform: scale(1.05);
+}
+
+.previewImage {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.previewName {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
+  margin-top: 0.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.footer {
+  display: flex;
+  margin-top: 40px;
+  justify-content: center;
+  width: 100%;
+  background-color: #6ed189;
+  padding: 10px 0;
+  color: white;
+  box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  max-width: 1200px;
+}
+
+.footer-title {
+  text-align: center;
+  margin-left: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.footer-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-logo-image {
+  height: 80px;
+  width: auto;
+}
+.container {
+  max-width: 90%;
+  margin: 20px auto;
+}
+
+/* Media querys */
+@media (max-width: 768px) {
+  .aboutUsText {
+    width: 90%;
+    font-size: 0.9rem;
+    padding: 10px;
+    margin: 15px auto;
+  }
+}
+
+@media (min-width: 1200px) {
+  .animal-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .animal-list {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 768px) {
+  .card1 {
+    margin: 5% auto;
+    padding: 15px;
+    width: 95%;
+  }
+}
+@media (max-width: 768px) {
+  .pet-details-page {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media (max-width: 768px) {
+  .textDetails {
+    width: 95%;
+  }
+}
+@media (max-width: 768px) {
+  .carousel-container {
+    width: 95%;
+  }
+}
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media (max-width: 768px) {
+  .form {
+    max-width: 90%;
+  }
+}
+@media (max-width: 768px) {
+  .previewAnimals {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .buttonBox {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .buttonBox {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 95%;
+    margin: 15px auto;
+  }
+}
+
+/* Small screens (mobile) */
+@media (max-width: 480px) {
+  .container {
+    max-width: 100%;
+    margin: 10px auto;
+    padding: 0 10px; /* Add horizontal padding for better readability */
+  }
 }

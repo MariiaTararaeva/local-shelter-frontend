@@ -63,11 +63,8 @@ const PetDetails = ({ pet }) => {
           pet?.contact?.address?.postcode || ""
         }, ${pet?.contact?.address?.country || ""}`}
       </p>
-      <a href={pet?.url} target="_blank" rel="noopener noreferrer">
-        View on PetFinder
-      </a>
 
-      <div className="backButton">
+      <div>
         <button className="backButton" onClick={() => navigate(-1)}>
           Back
         </button>

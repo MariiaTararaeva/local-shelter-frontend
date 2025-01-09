@@ -1,3 +1,4 @@
+//add adopted update in form and adopted list on homepage
 import { useEffect, useState } from "react";
 import "../styles/App.css";
 

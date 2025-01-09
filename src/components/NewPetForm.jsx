@@ -93,65 +93,67 @@ function NewPetForm({ animal = {}, onSubmit }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Name:
-        <input
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Animal's name"
-          required
-        />
-      </label>
-      <label>
-        Breed:
-        <input
-          value={breed}
-          onChange={(e) => setBreed(e.target.value)}
-          placeholder="Animal's breed"
-          required
-        />
-      </label>
-      <label>
-        Gender:
-        <select
-          value={gender}
-          onChange={(e) => setGender(e.target.value)}
-          required
-        >
-          <option value="">Select Gender</option>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-        </select>
-      </label>
-      <label>
-        Age:
-        <input
-          type="text"
-          value={age}
-          onChange={(e) => setAge(e.target.value)}
-          placeholder="Animal's age"
-          required
-        />
-      </label>
-      <label>
-        Image URL:
-        <input
-          value={image}
-          onChange={(e) => setImage(e.target.value)}
-          placeholder="Image URL"
-        />
-      </label>
-      <label>
-        Description:
-        <textarea
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          placeholder="Animal's description"
-        />
-      </label>
-      <button type="submit">Save Animal</button>
-    </form>
+    <div className="form">
+      <form onSubmit={handleSubmit}>
+        <label>
+          Name:
+          <input
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Animal's name"
+            required
+          />
+        </label>
+        <label>
+          Breed:
+          <input
+            value={breed}
+            onChange={(e) => setBreed(e.target.value)}
+            placeholder="Animal's breed"
+            required
+          />
+        </label>
+        <label>
+          Gender:
+          <select
+            value={gender}
+            onChange={(e) => setGender(e.target.value)}
+            required
+          >
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </label>
+        <label>
+          Age:
+          <input
+            type="text"
+            value={age}
+            onChange={(e) => setAge(e.target.value)}
+            placeholder="Animal's age"
+            required
+          />
+        </label>
+        <label>
+          Image URL:
+          <input
+            value={image}
+            onChange={(e) => setImage(e.target.value)}
+            placeholder="Image URL"
+          />
+        </label>
+        <label>
+          Description:
+          <textarea
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            placeholder="Animal's description"
+          />
+        </label>
+        <button type="submit">Save Animal</button>
+      </form>
+    </div>
   );
 }
 

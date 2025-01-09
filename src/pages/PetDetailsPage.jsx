@@ -4,6 +4,8 @@ import "../styles/App.css"; // Custom styles
 import CarouselContainer from "../components/CarouselContainer";
 import PetDetails from "../components/PetDescription";
 import logo from "../assets/localShelterLogoImage.png";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function PetDetailsPage() {
   const { petsId } = useParams();

@@ -39,17 +39,17 @@ function AnimalList({ animals, searchTerm, setAnimals }) {
     <div className="animal-list">
       {filteredAnimals.map((animal) => (
         <div className="petBox" key={animal.id}>
-          {" "}
-          {console.log(animal)}
           <div className="image-column">
             <img
               className="photoBox"
               src={
-                animal.photos && animal.photos[0]
+                animal.photos &&
+                animal.photos.length > 0 &&
+                animal.photos[0].small
                   ? animal.photos[0].small
                   : logo
               }
-              alt="Pet Pic"
+              alt={`${animal.name || "Default"} Photo`}
             />
           </div>
           <div className="text-column">
