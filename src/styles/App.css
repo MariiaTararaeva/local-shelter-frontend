@@ -181,7 +181,11 @@ input[type="text"]::placeholder {
 /*details Page*/
 
 .detailsTitle {
-  text-align: center;
+  margin-left: 160px;
+}
+
+.subTitleDetails {
+  font-weight: bold;
 }
 
 .photoDetails {
@@ -258,3 +262,5 @@ input[type="text"]::placeholder {
   border-radius: 5px;
   border: 1px solid #4385f4;
 }
+
+/*Details Page*/

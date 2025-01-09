@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "../styles/App.css";
+import logo from "../assets/localShelterLogoImage.png";
 
 function AnimalList({ animals, searchTerm, setAnimals }) {
   const filteredAnimals = animals.filter((animal) => {
@@ -46,7 +47,7 @@ function AnimalList({ animals, searchTerm, setAnimals }) {
               src={
                 animal.photos && animal.photos[0]
                   ? animal.photos[0].small
-                  : "./src/assets/localShelterLogoImage.png"
+                  : logo
               }
               alt="Pet Pic"
             />

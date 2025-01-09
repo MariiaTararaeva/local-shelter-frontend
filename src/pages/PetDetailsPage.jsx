@@ -99,15 +99,35 @@ function PetDetailsPage() {
           <img className="photoDetails" src={photo} alt="Pet Image" />
 
           <div className="textDetails">
-            <p>Breed: {breed}</p>
-            <p>Color: {color}</p>
-            <p>Age: {age}</p>
-            <p>Gender: {gender}</p>
-            <p>Size: {size}</p>
-            <p>Coat: {coat}</p>
-            <p>Attributes: {spayedNeutered}</p>
-            <p>Tags: {tags}</p>
-            <p>Description: {description}</p>
+            <p>
+              <span className="subTitleDetails">Breed:</span> {breed}
+            </p>
+            <p>
+              <span className="subTitleDetails">Color:</span> {color}
+            </p>
+            <p>
+              <span className="subTitleDetails">Age:</span> {age}
+            </p>
+            <p>
+              <span className="subTitleDetails">Gender:</span> {gender}
+            </p>
+            <p>
+              <span className="subTitleDetails">Size:</span> {size}
+            </p>
+            <p>
+              <span className="subTitleDetails">Coat:</span> {coat}
+            </p>
+            <p>
+              <span className="subTitleDetails">Attributes:</span>{" "}
+              {spayedNeutered}
+            </p>
+            <p>
+              <span className="subTitleDetails">Tags:</span> {tags}
+            </p>
+            <p>
+              <span className="subTitleDetails">Description:</span>{" "}
+              {description}
+            </p>
           </div>
 
           <div className="buttonGroup">
