@@ -7,7 +7,7 @@ function HomePage() {
     <div>
       <div className="imgContainer">
         <img className="homePhoto" src={dogImage} alt="Pet Picture" />
-        <h1 className="titleHome">Welcome to Gooby</h1>
+        <h1 className="titleHome">Welcome to Gooby </h1>
       </div>
       <article className="aboutUsText">
         <p>
@@ -26,17 +26,17 @@ function HomePage() {
           lives, theirs and yours.
         </p>
       </article>
-      <div></div>
-      <div className="card">
-        <h5 className="titleCard">YOUR FUTURE PET</h5>
+
+      <div className="card1">
+        <h3 className="titleCard">Your future Pet</h3>
         <Link to="/listOfPets">
           <button className="buttonCard" type="button">
-            Ready ?
+            ¿ Ready ?
           </button>
         </Link>
       </div>
-      <div className="card">
-        <h5 className="titleCard">Adoption Information</h5>
+      <div className="card2">
+        <h3 className="titleCard">Adoption Information</h3>
         <Link to="/adopted">
           <button className="buttonCard" type="button">
             Your Details

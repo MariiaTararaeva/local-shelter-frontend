@@ -14,7 +14,10 @@ import AllPetsPage from "./pages/AllPetsPage";
 import AdoptedPetsPage from "./pages/AdoptedPetsPage";
 import EditAnimalForm from "./pages/EditPetPage";
 import AddNewAnimal from "./pages/NewPetPage";
+import NewPetForm from "./components/NewPetForm";
 import PetDetailsPage from "./pages/PetDetailsPage";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function AppContent() {
   const [newAnimals, setNewAnimals] = useState([]); // State to manage the list of animals
@@ -50,6 +53,7 @@ function AppContent() {
         <Route path="/adopted" element={<AdoptedPetsPage />} />
 
         <Route path="/edit-animal/:id" element={<EditAnimalForm />} />
+        <Route path="/newpetform/:id" element={<NewPetForm />} />
 
         <Route
           path="/pet/new"

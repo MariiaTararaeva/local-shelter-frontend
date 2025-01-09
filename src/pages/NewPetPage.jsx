@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import NewPetForm from "../components/NewPetForm";
 
-function AddNewAnimal({ newAnimals = [], setNewAnimals }) {
+function AddNewAnimal() {
+  const navigate = useNavigate();
   const handleCreate = async (newAnimal) => {
     try {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/animals`, {
@@ -12,10 +14,7 @@ function AddNewAnimal({ newAnimals = [], setNewAnimals }) {
       if (!response.ok) {
         throw new Error("Failed to add new animal");
       }
-
-      const createdAnimal = await response.json();
-
-      setNewAnimals((prevAnimals) => [createdAnimal, ...prevAnimals]);
+      navigate("/listOfPets");
     } catch (error) {
       console.error("Error creating animal:", error.message);
     }
